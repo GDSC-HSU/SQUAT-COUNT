@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Import TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8.3/dist/teachablemachine-pose.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="repCounter" style="position: absolute;left: 5%;color: red;font-size: 8em">
+    </div>
+    <div style="display: flex;flex-direction: column; justify-content:center">
+        <video id="livestream" autoplay></video>
+        <!-- <input id="repCount" type="text" placeholder="INPUT SQUAT COUNT"> -->
+        <button id="startutton">START</button>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
