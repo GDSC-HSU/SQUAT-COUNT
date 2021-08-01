@@ -20,24 +20,23 @@ class SquatCounter {
         this.prevState = this.currentState;
 
         this.currentState = squat_state_name;
+
+        // UP->DOWN->UP => count++
         if (this.prevState != this.currentState && squat_state_name == "squat_up") {
             this.squatCount++;
             repCounter.innerHTML = this.squatCount;
-            // console.log(this.prevState, this.currentState)
-            // console.log(this.squatCount)
         }
 
     }
 
-
+    // Input as follow
+    // prediction = {// className: "squat_down"
+    // probability: 0.9775500297546387}
     processState(prediction) {
-        // console.table(prediction)
+        // sort the max squatState probability
         var squat_sate = prediction.sort((a, b) => a.probability - b.probability)[0];
-        console.log(squat_sate.className)
         var state_name = squat_sate.className
         this._setState(state_name);
-
-        // }
     }
 }
 
@@ -52,8 +51,7 @@ function enableWebCam() {
 }
 
 
-// className: "squat_down"
-// probability: 0.9775500297546387
+
 async function loadModel() {
     model = await tmPose.load(URL + modelURL, URL + modelMetaData);
 
@@ -87,6 +85,7 @@ async function predict() {
 function main(params) {
     // loadModel()
     enableWebCam().then(async () => {
+
         startutton.disabled = true
         startutton.innerText = "LOADING...."
         await loadModel();
